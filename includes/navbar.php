@@ -7,22 +7,22 @@ if (session_status() === PHP_SESSION_NONE) {
 <nav class="navbar navbar-expand-lg navbar-dark navbar-futur fixed-top">
     <div class="container-fluid px-4">
 
-        <!-- LOGO -->
+        
         <a class="navbar-brand fw-bold text-info d-flex align-items-center gap-2" href="/biblio/index.php">
             <i class="fas fa-book-open"></i>
             <span>BIBLIO</span>
         </a>
 
-        <!-- TOGGLER -->
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- MENU -->
+        
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ms-auto align-items-center gap-2">
 
-                <!-- ADMIN -->
+                
                 <?php if ($_SESSION["role"] === "admin"): ?>
 
                     <li class="nav-item">
@@ -55,7 +55,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                     </li>
 
-                <!-- USER -->
+                
                 <?php else: ?>
 
                     <li class="nav-item">
@@ -84,14 +84,14 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <?php endif; ?>
 
-                <!-- ROLE -->
+                
                 <li class="nav-item ms-lg-3">
                     <span class="badge badge-role px-3 py-2">
                         <?= strtoupper(htmlspecialchars($_SESSION["role"])) ?>
                     </span>
                 </li>
 
-                <!-- LOGOUT -->
+                
                 <li class="nav-item ms-lg-2">
                     <a class="btn btn-outline-danger btn-sm px-3" href="/biblio/auth/logout.php">
                         <i class="fas fa-sign-out-alt"></i>

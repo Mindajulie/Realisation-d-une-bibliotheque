@@ -4,10 +4,7 @@ require "../includes/config.php";
 
 $isAdmin = $_SESSION["role"] === "admin";
 
-/*
- On récupère les livres
- + on vérifie s’ils sont empruntés (dateRetour IS NULL)
-*/
+
 $livres = $pdo->query("
     SELECT 
         l.*,
@@ -66,7 +63,7 @@ $livres = $pdo->query("
 
                     <td class="text-end">
 
-                        <!-- 👑 ADMIN -->
+                        
                         <?php if ($isAdmin): ?>
 
                             <a href="edit.php?id=<?= $l["id"] ?>"
@@ -90,7 +87,7 @@ $livres = $pdo->query("
                                 <span class="text-muted ms-2">—</span>
                             <?php endif; ?>
 
-                        <!-- 👤 USER -->
+                
                         <?php else: ?>
 
                             <?php if (!$l["enCours"]): ?>

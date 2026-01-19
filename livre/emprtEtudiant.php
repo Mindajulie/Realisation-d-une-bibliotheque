@@ -1,9 +1,9 @@
 <?php
 include "../includes/auth.php";
-include "../includes/admin.php"; // bloque non-admin
+include "../includes/admin.php"; 
 include "../includes/config.php";
 
-// Sécurité POST
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: index.php");
     exit;
@@ -17,7 +17,7 @@ if (!$livre_id || !$etudiant_id) {
     exit;
 }
 
-// Vérifier que le livre existe et est disponible
+
 $stmt = $pdo->prepare("
     SELECT id, disponible
     FROM livre
@@ -31,7 +31,7 @@ if (!$livre || !$livre["disponible"]) {
     exit;
 }
 
-// Vérifier que l’étudiant existe
+
 $stmt = $pdo->prepare("
     SELECT id
     FROM etudiant
@@ -43,11 +43,11 @@ if (!$stmt->fetch()) {
     exit;
 }
 
-// TRANSACTION (important)
+
 $pdo->beginTransaction();
 
 try {
-    // 1️⃣ Insérer l’emprunt
+    
     $stmt = $pdo->prepare("
         INSERT INTO emprunt (
             livre_id,
@@ -63,7 +63,7 @@ try {
         $_SESSION["user_id"]
     ]);
 
-    // 2️⃣ Rendre le livre indisponible
+    
     $stmt = $pdo->prepare("
         UPDATE livre
         SET disponible = 0
@@ -78,8 +78,6 @@ try {
 
 } catch (Exception $e) {
     $pdo->rollBack();
-    // DEBUG possible :
-    // die($e->getMessage());
     header("Location: index.php?error=1");
     exit;
 }

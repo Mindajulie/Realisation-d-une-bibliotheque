@@ -2,11 +2,7 @@
 include "../includes/auth.php";
 include "../includes/config.php";
 
-/*
-|--------------------------------------------------------------------------
-| 0️⃣ RÉCUPÉRER LE LIVRE
-|--------------------------------------------------------------------------
-*/
+
 $idLivre = $_GET["id"] ?? $_POST["livre_id"] ?? null;
 
 if (!$idLivre) {
@@ -14,11 +10,7 @@ if (!$idLivre) {
     exit;
 }
 
-/*
-|--------------------------------------------------------------------------
-| 1️⃣ VÉRIFIER DISPONIBILITÉ
-|--------------------------------------------------------------------------
-*/
+
 $stmt = $pdo->prepare("
     SELECT id, disponible 
     FROM livre 
@@ -32,11 +24,7 @@ if (!$livre || !$livre["disponible"]) {
     exit;
 }
 
-/*
-|--------------------------------------------------------------------------
-| 2️⃣ DÉTERMINER L’EMPRUNTEUR
-|--------------------------------------------------------------------------
-*/
+
 $role = $_SESSION["role"];
 
 $user_id = null;
@@ -66,16 +54,12 @@ if ($role === "user") {
     exit;
 }
 
-/*
-|--------------------------------------------------------------------------
-| 3️⃣ TRANSACTION
-|--------------------------------------------------------------------------
-*/
+
 $pdo->beginTransaction();
 
 try {
 
-    // ➕ Ajouter l’emprunt
+    
     $pdo->prepare("
         INSERT INTO emprunt (
             livre_id,
@@ -94,7 +78,7 @@ try {
         $admin_id
     ]);
 
-    // 🔒 Livre indisponible
+    
     $pdo->prepare("
         UPDATE livre 
         SET disponible = 0 

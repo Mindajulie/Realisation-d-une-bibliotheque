@@ -1,6 +1,3 @@
-/* ==================================================
-   VARIABLES (DESIGN SYSTEM)
-================================================== */
 :root {
     --bg-main: #f6f8fc;
     --bg-glass: rgba(255, 255, 255, 0.85);
@@ -20,9 +17,7 @@
     --shadow-hover: 0 20px 45px rgba(37, 99, 235, 0.25);
 }
 
-/* ==================================================
-   RESET & BASE
-================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -44,14 +39,11 @@ body {
     color: var(--text-main);
 }
 
-/* ==================================================
-   LAYOUT
-================================================== */
 .main-content {
     flex: 1;
     padding: 30px 0;
 }
-/* NAVBAR - STYLE PRO COHÉRENT */
+
 .navbar {
     position: sticky;
     top: 0;
@@ -67,7 +59,7 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* liens */
+
 .navbar .nav-link {
     color: #e5e7eb !important;
     font-weight: 500;
@@ -81,13 +73,13 @@ body {
     color: #00c6ff !important;
 }
 
-/* logo */
+
 .navbar-brand {
     font-weight: 700;
     letter-spacing: 1px;
 }
 
-/* badge rôle */
+
 .badge.bg-gradient,
 .badge-role {
     background: linear-gradient(45deg, #00c6ff, #0072ff);
@@ -97,13 +89,13 @@ body {
     border-radius: 20px;
 }
 
-/* bouton logout */
+
 .navbar .btn-outline-danger {
     border-radius: 20px;
     padding: 4px 10px;
 }
 
-/* mobile */
+
 @media (max-width: 991px) {
     .navbar-collapse {
         background: rgba(2, 6, 23, 0.95);
@@ -113,9 +105,6 @@ body {
     }
 }
 
-/* ==================================================
-   AUTH (LOGIN / REGISTER)
-================================================== */
 .auth-page {
     min-height: calc(100vh - 120px);
     display: flex;
@@ -140,9 +129,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* ==================================================
-   FORMS
-================================================== */
 .form-control {
     border-radius: 14px;
     border: 1px solid var(--border-light);
@@ -156,9 +142,6 @@ body {
     box-shadow: 0 0 0 4px var(--primary-soft);
 }
 
-/* ==================================================
-   BUTTONS
-================================================== */
 .btn-futur {
     width: 100%;
     padding: 14px;
@@ -175,17 +158,11 @@ body {
     box-shadow: var(--shadow-hover);
 }
 
-/* ==================================================
-   DASHBOARD
-================================================== */
 .dashboard-title {
     font-weight: 800;
     margin-bottom: 25px;
 }
 
-/* ==================================================
-   CARDS
-================================================== */
 .card {
     background: var(--bg-glass);
     border-radius: var(--radius);
@@ -204,9 +181,6 @@ body {
     font-weight: 700;
 }
 
-/* ==================================================
-   BADGES
-================================================== */
 .badge-role,
 .badge.bg-gradient {
     background: linear-gradient(135deg, var(--primary), var(--accent));
@@ -216,9 +190,6 @@ body {
     font-weight: 600;
 }
 
-/* ==================================================
-   TABLES
-================================================== */
 .table {
     border-radius: 14px;
     overflow: hidden;
@@ -233,9 +204,6 @@ body {
     background: var(--primary-soft);
 }
 
-/* ==================================================
-   FOOTER
-================================================== */
 .footer {
     background: var(--bg-glass);
     backdrop-filter: blur(14px);
@@ -246,9 +214,6 @@ body {
     font-size: 14px;
 }
 
-/* ==================================================
-   ANIMATIONS
-================================================== */
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -333,13 +298,13 @@ body {
     transform: translateY(-6px) scale(1.02);
     box-shadow: 0 12px 30px rgba(0, 198, 255, 0.25);
 }
-/* RESET GLOBAL */
+
 html, body {
     margin: 0;
     padding: 0;
 }
 
-/* NAVBAR COLLÉE EN HAUT */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -348,13 +313,11 @@ html, body {
     z-index: 9999;
 }
 
-/* ESPACE POUR LE CONTENU */
+
 body {
-    padding-top: 72px; /* hauteur navbar */
+    padding-top: 72px; 
 }
-/* ==========================
-   TOAST FUTURISTE
-========================== */
+
 
 .toast {
     border-radius: 14px;

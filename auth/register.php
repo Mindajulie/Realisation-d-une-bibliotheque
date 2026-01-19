@@ -10,9 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email   = trim($_POST["email"] ?? "");
     $password = $_POST["password"] ?? "";
 
-    /* ======================
-       VALIDATIONS
-    ====================== */
+   
 
     if ($nom === "" || $prenom === "") {
         $errors[] = "Nom et prénom obligatoires";
@@ -26,9 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Le mot de passe doit contenir au moins 8 caractères";
     }
 
-    /* ======================
-       EMAIL UNIQUE
-    ====================== */
+    
     $check = $pdo->prepare("SELECT id FROM users WHERE email = ?");
     $check->execute([$email]);
 
@@ -36,9 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Cet email est déjà utilisé";
     }
 
-    /* ======================
-       INSERTION
-    ====================== */
+   
     if (empty($errors)) {
 
         $hash = password_hash($password, PASSWORD_DEFAULT);

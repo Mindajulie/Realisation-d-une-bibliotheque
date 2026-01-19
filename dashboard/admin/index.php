@@ -3,13 +3,13 @@ include "../../includes/auth.php";
 include "../../includes/admin.php";
 include "../../includes/config.php";
 
-/* === STATISTIQUES === */
+
 $totalEtudiant = $pdo->query("SELECT COUNT(*) FROM etudiant")->fetchColumn();
 $totalLivres = $pdo->query("SELECT COUNT(*) FROM livre")->fetchColumn();
 $livresEmpruntes = $pdo->query("SELECT COUNT(*) FROM livre WHERE disponible = 0")->fetchColumn();
 $empruntsEnCours = $pdo->query("SELECT COUNT(*) FROM emprunt WHERE dateRetour IS NULL")->fetchColumn();
 
-/* === DERNIERS EMPRUNTS === */
+
 $lastEmprunts = $pdo->query("
     SELECT 
         users.nom, users.prenom,
@@ -28,13 +28,13 @@ $lastEmprunts = $pdo->query("
 
 <div class="container mt-5">
 
-    <!-- TITRE -->
+    
     <div class="mb-4 fade-in">
         <h2>👑 Dashboard Administrateur</h2>
         <p class="text-muted">Vue globale et contrôle du système</p>
     </div>
 
-    <!-- STATS -->
+    
     <div class="row g-4 mb-4">
 
         <div class="col-md-3">
@@ -67,7 +67,7 @@ $lastEmprunts = $pdo->query("
 
     </div>
 
-    <!-- DERNIERS EMPRUNTS -->
+    
     <div class="card p-4 fade-in">
         <h5 class="mb-3">📌 Derniers emprunts</h5>
 

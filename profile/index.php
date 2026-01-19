@@ -4,7 +4,7 @@ require "../includes/config.php";
 
 $id = $_SESSION["user_id"];
 
-/* Infos utilisateur */
+
 $stmt = $pdo->prepare("SELECT nom, prenom, email FROM users WHERE id = ?");
 $stmt->execute([$id]);
 $user = $stmt->fetch();
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email  = trim($_POST["email"]);
     $password = $_POST["password"] ?? "";
 
-    /* VALIDATIONS */
+    
     if ($nom === "" || $prenom === "") {
         $errors[] = "Nom et prénom obligatoires";
     }
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Email invalide";
     }
 
-    /* Email unique (sauf lui-même) */
+    
     $check = $pdo->prepare("
         SELECT id FROM users 
         WHERE email = ? AND id != ?
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Email déjà utilisé";
     }
 
-    /* UPDATE */
+    
     if (empty($errors)) {
 
         if ($password !== "") {

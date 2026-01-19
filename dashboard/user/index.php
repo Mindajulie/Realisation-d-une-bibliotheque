@@ -2,12 +2,12 @@
 include "../../includes/auth.php";
 include "../../includes/config.php";
 
-/* === LIVRES DISPONIBLES === */
+
 $livresDispo = $pdo->query("
     SELECT COUNT(*) FROM livre WHERE disponible = 1
 ")->fetchColumn();
 
-/* === MES EMPRUNTS === */
+
 $stmt = $pdo->prepare("
     SELECT livre.titre, emprunt.dateEmprunt
     FROM emprunt
@@ -24,7 +24,7 @@ $emprunts = $stmt->fetchAll();
 
 <div class="container mt-5">
 
-    <!-- BIENVENUE -->
+    
     <div class="card p-4 mb-4 fade-in">
         <h3>👋 Bienvenue <?= htmlspecialchars($_SESSION["prenom"]) ?></h3>
         <p class="text-muted">Voici votre espace personnel</p>
@@ -34,7 +34,7 @@ $emprunts = $stmt->fetchAll();
 
     <div class="row g-4">
 
-        <!-- LIVRES DISPO -->
+        
         <div class="col-md-4">
             <div class="card user-card text-center p-4">
                 <h5>📚 Livres disponibles</h5>
@@ -42,7 +42,7 @@ $emprunts = $stmt->fetchAll();
             </div>
         </div>
 
-        <!-- MES EMPRUNTS -->
+        
         <div class="col-md-8">
             <div class="card p-4 user-card">
                 <h5 class="mb-3">📖 Mes emprunts en cours</h5>
@@ -51,7 +51,7 @@ $emprunts = $stmt->fetchAll();
                     <thead>
                         <tr>
                             <th>Livre</th>
-                            <th>Date d’emprunt</th>
+                            <th>Date d'emprunt</th>
                         </tr>
                     </thead>
                     <tbody>

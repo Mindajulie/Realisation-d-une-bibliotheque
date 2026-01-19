@@ -1,6 +1,6 @@
 <?php
 include "../includes/auth.php";
-include "../includes/admin.php"; // bloque les non-admin
+include "../includes/admin.php"; 
 include "../includes/config.php";
 
 $livre_id = $_GET["livre_id"] ?? null;
@@ -10,7 +10,7 @@ if (!$livre_id) {
     exit;
 }
 
-// Vérifier que le livre est disponible
+
 $stmt = $pdo->prepare("SELECT titre, disponible FROM livre WHERE id = ?");
 $stmt->execute([$livre_id]);
 $livre = $stmt->fetch();
@@ -20,7 +20,7 @@ if (!$livre || !$livre["disponible"]) {
     exit;
 }
 
-// Liste des étudiants
+
 $etudiants = $pdo->query("
     SELECT id, nom, prenom, classe
     FROM etudiant

@@ -5,7 +5,7 @@ include "../includes/config.php";
 $isAdmin = $_SESSION["role"] === "admin";
 
 if ($isAdmin) {
-    // ADMIN → tous les emprunts
+    
     $stmt = $pdo->query("
         SELECT 
             e.id,
@@ -36,7 +36,7 @@ if ($isAdmin) {
     $emprunts = $stmt->fetchAll();
 
 } else {
-    // USER → ses emprunts seulement
+    
     $stmt = $pdo->prepare("
         SELECT 
             e.id,
